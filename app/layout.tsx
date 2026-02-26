@@ -3,6 +3,9 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://css-minifier.vercel.app'),
+  alternates: {
+    canonical: 'https://css-minifier.vercel.app',
+  },
   title: 'CSS Minifier — Compress CSS | Free Online Tool',
   description: 'Minify and compress CSS code. Free CSS optimizer for faster websites.',
   keywords: ['css minifier', 'css compressor', 'minify css', 'compress css'],
