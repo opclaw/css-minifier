@@ -1,24 +1,100 @@
+@import '../../shared/design-system.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Override primary colors for blue theme */
+:root {
+  /* Blue Primary Colors */
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+
+  /* Aliases */
+  --color-primary: var(--primary-600);
+  --color-primary-light: var(--primary-500);
+  --color-primary-dark: var(--primary-700);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+  --gradient-primary-hover: linear-gradient(135deg, var(--primary-400) 0%, var(--primary-500) 100%);
+}
+
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-primary {
-    @apply btn bg-indigo-600 text-white shadow-md hover:bg-indigo-700 hover:shadow-lg;
+    @apply btn;
+    background: var(--gradient-primary);
+    color: var(--color-text-inverse);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--gradient-primary-hover);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(0) scale(0.98);
   }
   .btn-secondary {
-    @apply btn bg-white text-slate-700 border border-slate-300 shadow-sm hover:bg-slate-50 hover:border-indigo-300 hover:text-indigo-600;
+    @apply btn bg-white text-slate-700 border border-slate-300 shadow-sm hover:bg-slate-50 hover:border-blue-300 hover:text-blue-600;
   }
   .btn-ghost {
     @apply btn bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900;
   }
   .input {
-    @apply w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+    @apply w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
   }
   .textarea {
-    @apply w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 resize-y transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+    @apply w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 resize-y transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+  }
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-bounce), box-shadow var(--transition-base);
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  .hero {
+    padding: var(--space-16) var(--space-6);
+    background: var(--gradient-surface);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero-icon {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-xl);
+  }
+  .stat-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .stat-card-primary {
+    background: var(--primary-50);
+    border: 1px solid var(--primary-200);
+  }
+  .stat-card-success {
+    background: var(--success-50);
+    border: 1px solid var(--success-100);
+  }
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
